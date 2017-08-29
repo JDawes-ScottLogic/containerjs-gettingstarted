@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<body>
+  <h1>Hello World!</h1>
+  <div>
+    ContainerJS status: <span id="status">initialising</span>
+  </div>
+
+  <script src="../node_modules/containerjs-api-browser/build/dist/containerjs-api.js"></script>
+
+  <script>
+    ssf.app.ready()
+      .then(() => {
+        const status = document.getElementById('status')
+        status.innerText = 'ready';
+      });
+  </script>
+</body>

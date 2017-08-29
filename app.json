@@ -1,0 +1,6 @@
+{
+    "name": "Hello World",
+    "url": "http://localhost:8080/index.html",
+    "uuid": "hello-world",
+    "autoShow": true
+  }
