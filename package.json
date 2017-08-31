@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "containerjs-api-browser": "0.0.4",
-    "containerjs-api-electron": "0.0.6",
-    "containerjs-api-openfin": "0.0.5"
+    "containerjs-api-browser": "^0.0.4",
+    "containerjs-api-electron": "^0.0.6",
+    "containerjs-api-openfin": "^0.0.5"
   }
 }

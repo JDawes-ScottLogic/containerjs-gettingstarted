@@ -1,18 +1,98 @@
 <!doctype html>
-<meta charset="utf-8">
+<meta charset='utf-8'>
+
+<head>
+  <style>
+    @font-face {
+      font-family: 'fontello';
+      src: url('./fontello/font/fontello.eot?10308071');
+      src: url('./fontello/font/fontello.eot?10308071#iefix') format('embedded-opentype'),
+      url('./fontello/font/fontello.woff?10308071') format('woff'),
+      url('./fontello/font/fontello.ttf?10308071') format('truetype'),
+      url('./fontello/font/fontello.svg?10308071#fontello') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .icon {
+      font-family: 'fontello';
+      font-style: normal;
+      font-weight: normal;
+      speak: none;
+
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      margin-right: .2em;
+      text-align: center;
+      /* opacity: .8; */
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+
+      /* fix buttons height, for twitter bootstrap */
+      line-height: 1em;
+
+      /* Animation center compensation - margins should be symmetric */
+      /* remove if not needed */
+      margin-left: .2em;
+
+      /* You can be more comfortable with increased icons size */
+      /* font-size: 120%; */
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      /* Uncomment for 3D effect */
+      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    }
+
+    .icon-ok {
+      color: green;
+      font-size: 150%;
+    }
+
+    .icon-cancel {
+      color: red;
+      font-size: 150%;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <link rel='stylesheet' href='fontello/css/animation.css'>
+</head>
+
 <body>
   <h1>Hello World!</h1>
   <div>
-    ContainerJS status: <span id="status">initialising</span>
+    ContainerJS status: <span>
+      <i id='failedStatus' class='icon icon-cancel'>&#xe801;</i>
+      <i id='successStatus' class='icon icon-ok hidden'>&#xe800;</i>
+    <span>
+  </div>
+  <div id='error' class='hidden'>
+      Error: ssf not defined: failed to load ContainerJs.
   </div>
 
-  <script src="../node_modules/containerjs-api-browser/build/dist/containerjs-api.js"></script>
+
+  <script src='../node_modules/containerjs-api-browser/build/dist/containerjs-api.js'></script>
 
   <script>
-    ssf.app.ready()
-      .then(() => {
-        const status = document.getElementById('status')
-        status.innerText = 'ready';
-      });
+    if (window.ssf !== undefined) {
+      ssf.app.ready()
+        .then(() => {
+          const successStatus = document.getElementById('successStatus')
+          const failedStatus = document.getElementById('failedStatus')
+          successStatus.classList.remove('hidden');
+          failedStatus.classList.add('hidden');
+        });
+    }
+    else {
+      const error = document.getElementById('error');
+      error.classList.remove('hidden');
+    }
   </script>
 </body>
